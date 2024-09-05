@@ -10,7 +10,8 @@
     "@types/memory-cache": "^0.2.4",
     "@types/node": "^16.11.10",
     "concurrently": "^8.2.2",
-    "ts-node": "10.7.0",
+    "env-cmd": "^10.1.0",
+    "ts-node": "^10.7.0",
     "typescript": "4.5.2"
   },
   "dependencies": {
@@ -20,9 +21,10 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "memory-cache": "^0.2.0",
+    "mysql2": "^3.11.0",
     "pg": "^8.4.0",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "0.3.17"
+    "typeorm": "^0.3.20"
   },
   "scripts": {
     "watch": "tsc -w",
@@ -31,6 +33,8 @@
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "migration": " npm run typeorm migration:run -- -d ./src/data-source.ts"
+    "migration:revert": "env-cmd ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/data-source.ts",
+    "migration:run": "env-cmd ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/data-source.ts",
+    "migration:create": " cd src/migrations && env-cmd -f ../../.env ts-node ../../node_modules/typeorm/cli.js migration:generate -d ../data-source.ts"
   }
 }
