@@ -33,6 +33,7 @@
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "typeorm": "typeorm-ts-node-commonjs",
+    "migration:revert": "env-cmd ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/data-source.ts",
     "migration:run": "env-cmd ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/data-source.ts",
     "migration:create": " cd src/migrations && env-cmd -f ../../.env ts-node ../../node_modules/typeorm/cli.js migration:generate -d ../data-source.ts"
   }

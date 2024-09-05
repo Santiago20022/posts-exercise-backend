@@ -18,8 +18,8 @@ export class User {
   street: string;
 
   @Column()
-  city: Date;
+  city: string;
 
   @Column()
-  zipcode: Number;
+  zipcode: string;
 }
