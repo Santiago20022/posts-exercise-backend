@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Todo } from "./Todo";
 
 @Entity()
 export class User {
@@ -22,4 +23,8 @@ export class User {
 
   @Column()
   zipcode: string;
+
+  @OneToMany(() => Todo, (todo) => todo.user)
+  todos: Todo[];
+ 
 }
