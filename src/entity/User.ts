@@ -25,6 +25,5 @@ export class User {
   zipcode: string;
 
   @OneToMany(() => Todo, (todo) => todo.user)
-  todos: Todo[];
- 
+  todos: Todo[];  
 }
