@@ -3,8 +3,16 @@ import { AppDataSource } from "../../data-source";
 import { User } from "../../entity/User";
 
 export async function getUsers(req: Request, res: Response) {
-    const userRespository = AppDataSource.manager.getRepository(User);
-    const users = await userRespository.find();
-    console.log(users)
-    res.send(users).status(200);
+    try {
+        const userRepository = AppDataSource.manager.getRepository(User);
+        const users = await userRepository.find();
+        if (!users || users.length === 0) {
+            res.status(404).send({ message: "Users not found" }); 
+          } else {
+            res.send(users).status(200);
+          } 
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: "Error fetching users" });
+    }
 }
