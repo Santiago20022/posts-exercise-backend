@@ -22,4 +22,6 @@ export class User {
 
   @Column()
   zipcode: string;
+  posts: any;
+  todos: any;
 }
