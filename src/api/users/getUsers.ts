@@ -7,10 +7,9 @@ export async function getUsers(req: Request, res: Response) {
         const userRepository = AppDataSource.manager.getRepository(User);
         const users = await userRepository.find();
         if (!users || users.length === 0) {
-            res.status(404).send({ message: "Users not found" }); 
-          } else {
-            res.send(users).status(200);
-          } 
+            return  res.status(404).send({ message: "Users not found" }); 
+            }
+        return res.send(users).status(200);
     } catch (error) {
         console.error(error);
         res.status(500).send({ message: "Error fetching users" });
