@@ -16,3 +16,4 @@ export class Todo {
   @JoinColumn({name:"userId" })
   user: User
 }
+
