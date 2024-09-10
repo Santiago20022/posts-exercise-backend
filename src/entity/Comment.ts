@@ -11,10 +11,10 @@ export class Comment {
   body: string;
 
   @ManyToOne(() => User, (user) => user.comments)
-  @JoinColumn({name:"userId" })
+  @JoinColumn({ name:"userId" })
   user: User;
 
   @ManyToOne(() => Post, (post) => post.comments)
-  @JoinColumn({name:"posId" })
+  @JoinColumn({ name:"postId" })
   post: Post
 }

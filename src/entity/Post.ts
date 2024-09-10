@@ -14,7 +14,7 @@ export class Post {
   title: string;
 
   @ManyToOne(() => User, (user) => user.posts)
-  @JoinColumn({name:"userId" })
+  @JoinColumn({ name:"userId" })
   user: User   
   
   @OneToMany(() => Comment, (comment) => comment.post)
