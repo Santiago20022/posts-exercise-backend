@@ -2,17 +2,17 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "t
 import { User } from "./User";
 
 @Entity()
-export class Todo {
+export class Post {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  content: string;
+  body: string;
 
   @Column()
-  completed: boolean;
+  title: string;
 
-  @ManyToOne(() => User, (user) => user.todos)
+  @ManyToOne(() => User, (user) => user.posts)
   @JoinColumn({name:"userId" })
-  user: User
+  user: User   
 }
