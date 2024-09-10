@@ -1,8 +1,8 @@
 import { AppDataSource } from "./data-source";
-import * as express from "express";
-import * as dotenv from "dotenv";
-import { Request, Response } from "express";
+import express from "express";
+import dotenv from "dotenv";
 import "reflect-metadata";
+import router from "./api";
 dotenv.config();
 
 const app = express();
@@ -11,9 +11,8 @@ const { PORT = 3000 } = process.env;
 
 AppDataSource.initialize()
   .then(async () => {
-    app.get('/', (req,res) =>{
-        res.send('Hello, TypeScript + node.js + Express!');
-    });
+    app.get('/', (req,res) => res.sendStatus(200));
+    app.use('/api', router);
     app.listen(PORT, () => {
       console.log("Server is running on http://localhost:" + PORT);
     });
