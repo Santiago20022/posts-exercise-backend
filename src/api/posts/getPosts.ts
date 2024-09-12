@@ -9,7 +9,7 @@ export async function getPosts(req: Request, res: Response) {
       relations: {
         user: true,
       },
-       loadEagerRelations: false,
+      loadEagerRelations: false,
     });
     if (!posts || posts.length === 0) {
       return res.status(404).send({ message: "Posts not found" });
