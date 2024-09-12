@@ -12,7 +12,7 @@ router.get('/get/users', (req, res) => getUsers(req, res));
 router.get('/get/posts', (req, res) => getPosts(req, res));
 router.get('/get/todos', (req, res) => getTodos(req, res));
 router.get('/get/comments', (req, res) => getComments(req, res));
-router.post('/posts', createPost);
-router.post('/users', createUser);
+router.post('/create/posts', createPost);
+router.post('/create/users', createUser);
 
 export default router;
