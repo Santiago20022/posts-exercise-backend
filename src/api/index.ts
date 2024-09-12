@@ -9,6 +9,6 @@ const router = express.Router();
 router.get('/get/users', (req, res) => getUsers(req, res));
 router.get('/get/posts', (req, res) => getPosts(req, res));
 router.get('/get/todos', (req, res) => getTodos(req, res));
-router.post("/users", createUser);
+router.post("/create/users", createUser);
 
 export default router;
