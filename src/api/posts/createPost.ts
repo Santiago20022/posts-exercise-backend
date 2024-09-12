@@ -16,8 +16,10 @@ export async function createPost(req: Request, res: Response) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const newPost = AppDataSource.manager.getRepository(Post).create({ title, body, user });
-    const savedPost = await AppDataSource.manager.getRepository(Post).save(newPost);
+    const postRepository = AppDataSource.manager.getRepository(Post);
+    const newPost = postRepository.create({ title, body, user });
+    const savedPost = await postRepository.save(newPost);
+
     return res.status(201).json(savedPost);
 
   } catch (error) {
