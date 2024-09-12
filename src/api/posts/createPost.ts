@@ -3,8 +3,7 @@ import { AppDataSource } from "../../data-source";
 import { Post } from "../../entity/Post";
 import { User } from "../../entity/User";
 
-//creo un post
-  export async function createPost(req: Request, res: Response) {
+export async function createPost(req: Request, res: Response) {
   const { title, body, userId } = req.body;
 
   if (!title || !body || !userId) {
