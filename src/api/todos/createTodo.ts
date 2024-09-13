@@ -15,7 +15,7 @@ export async function createTodo(req: Request, res: Response) {
     if (!content || !completed || !userId){
       return res.status(400).send({message: 'Missing required fields'})
     }
-    const user = await AppDataSource.manager.getRepository(User).findOneBy({ id: userId });
+    const user = await AppDataSource.manager.getRepository(User).findOne({ where: { id: userId } });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -25,8 +25,8 @@ export async function createTodo(req: Request, res: Response) {
     todo.completed = completed;
     todo.user = user;
 
-    const savedUser = await todoRepository.save(todo);
-    return res.send(savedUser).status(200);
+    const savedTodo = await todoRepository.save(todo);
+    return res.send(savedTodo).status(200);
   } catch (error) {
     console.error(error);
     res.status(500).send({ message: "Error creating todo" });
