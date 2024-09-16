@@ -6,6 +6,7 @@ import { getComments } from './comments/getComments';
 import { createPost } from './posts/createPost';
 import { createUser } from './users/createUser';
 import { createComment } from './comments/createComment';
+import { createTodo } from './todos/createTodo';
 
 const router = express.Router();
 
@@ -16,5 +17,6 @@ router.get('/get/comments', (req, res) => getComments(req, res));
 router.post('/create/post', createPost);
 router.post('/create/user', createUser);
 router.post('/create/comment', createComment);
+router.post('/create/todo', createTodo);
 
 export default router;
