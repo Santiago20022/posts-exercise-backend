@@ -4,9 +4,10 @@ import { getPosts } from './posts/getPosts';
 import { getTodos } from './todos/getTodos';
 import { getComments } from './comments/getComments';
 import { createPost } from './posts/createPost';
-import { createUser } from './users/createUser';
-import { createComment } from './comments/createComment';
+import { createUser } from './users/createUser'
+import { updateUser } from './users/updateUser';
 import { createTodo } from './todos/createTodo';
+import { createComment } from './comments/createComment';
 
 const router = express.Router();
 
@@ -18,5 +19,6 @@ router.post('/create/post', createPost);
 router.post('/create/user', createUser);
 router.post('/create/comment', createComment);
 router.post('/create/todo', createTodo);
+router.patch('/update/user/:id', updateUser);
 
 export default router;
