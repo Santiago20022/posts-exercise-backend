@@ -14,7 +14,7 @@ export async function updateComment(req: Request, res: Response) {
     if (!comment) {
       return res.status(404).json({ message: "Comment not found" });
     }
-
+    
     if (updates.userId) {
       const userRepository = AppDataSource.manager.getRepository(User);
       const user = await userRepository.findOne({ where: { id: updates.userId } });
@@ -37,7 +37,6 @@ export async function updateComment(req: Request, res: Response) {
 
     commentRepository.merge(comment, updates);
     await commentRepository.save(comment);
-
     return res.status(200).json(comment);
 
   } catch (error) {
