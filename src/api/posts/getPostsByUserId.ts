@@ -3,25 +3,25 @@ import { AppDataSource } from "../../data-source";
 import { Post } from "../../entity/Post";
 import { User } from "../../entity/User";
 
-export async function postByUser(req: Request, res: Response) {
+export async function getPostsByUserId(req: Request, res: Response) {
   try {
     const userId = req.params.userId;
     if (!userId) {
       return res.status(400).send({ message: "User ID is required" });
     }
 
-    const postRepository = AppDataSource.manager.getRepository(Post);
-    const posts = await postRepository
-      .createQueryBuilder("post")
-      .innerJoinAndSelect("post.user", "user")
+    const userRepository = AppDataSource.manager.getRepository(User);
+    const user = await userRepository
+      .createQueryBuilder("user")
+      .innerJoinAndSelect("user.posts", "post")
       .where("user.id = :userId", { userId })
-      .getMany();
+      .getOne();
 
-    if (!posts || posts.length === 0) {
-      return res.status(404).send({ message: "Posts not found" });
-    }
+      if (!user) {
+        return res.status(404).send({ message: "User not found" });
+      }
 
-    return res.send(posts).status(200);
+    return res.send(user).status(200);
   } catch (error) {
     console.error(error);
     res.status(500).send({ message: "Error fetching posts" });
