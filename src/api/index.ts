@@ -11,6 +11,7 @@ import { createComment } from './comments/createComment';
 import { updatePost } from './posts/updatePost';
 import { updateComment } from './comments/updateComment';
 import { updateTodo } from './todos/updateTodo';
+import { getPostsByUserId } from './posts/getPostsByUserId';
 
 const router = express.Router();
 
@@ -26,5 +27,6 @@ router.patch('/update/user/:id', updateUser);
 router.patch('/update/post/:id', updatePost);
 router.patch('/update/comment/:id', updateComment);
 router.patch('/update/todo/:id', updateTodo);
+router.get("/users/:userId/posts", getPostsByUserId);
 
 export default router;
