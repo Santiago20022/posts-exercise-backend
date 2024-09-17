@@ -3,7 +3,7 @@ import { AppDataSource } from "../../data-source";
 import { Post } from "../../entity/Post";
 import { User } from "../../entity/User";
 
-export async function UserPosts(req: Request, res: Response) {
+export async function postByUser(req: Request, res: Response) {
   try {
     const userId = req.params.userId;
     if (!userId) {
