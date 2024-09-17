@@ -25,7 +25,6 @@ export async function createComment(req: Request, res: Response) {
     const commentRepository = AppDataSource.manager.getRepository(Comment);
     const newComment = commentRepository.create({ body, user, post });
     const savedComment = await commentRepository.save(newComment);
-
     return res.status(201).json(savedComment);
 
   } catch (error) {
