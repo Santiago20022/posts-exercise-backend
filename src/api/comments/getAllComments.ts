@@ -9,7 +9,8 @@ export async function getCommentsByPostId(req: Request, res: Response) {
 
   try {
   const postIdNumber = Number(postId);
-  if (isNaN(postIdNumber)) {return res.status(400).json({ message: "Invalid post ID" })};
+  if (isNaN(postIdNumber)) 
+  {return res.status(400).json({ message: "Invalid post ID" })};
 
   const comments = await AppDataSource.getRepository(Comment)
     .createQueryBuilder("comment")
