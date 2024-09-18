@@ -11,18 +11,17 @@ export async function getTodosByUserId(req: Request, res: Response) {
     }
 
     const userRepository = AppDataSource.manager.getRepository(User);
-    const user = await userRepository
+    const userWithTodos = await userRepository
       .createQueryBuilder("user")
       .innerJoinAndSelect("user.todos", "todo")
       .where("user.id = :userId", { userId })
       .getOne();
 
-    if (!user) {
+    if (!userWithTodos) {
       return res.status(404).send({ message: "User not found" });
     }
 
-    const todos = user.todos;
-    return res.send(todos).status(200);
+    return res.send(userWithTodos).status(200);
   } catch (error) {
     console.error(error);
     res.status(500).send({ message: "Error fetching todos" });
