@@ -29,6 +29,6 @@ router.patch('/update/post/:id', updatePost);
 router.patch('/update/comment/:id', updateComment);
 router.patch('/update/todo/:id', updateTodo);
 router.get("/users/:userId/posts", getPostsByUserId);
-router.get('/posts/comments/:postId', getCommentsByPostId);
+router.get('/posts/:postId/comments', getCommentsByPostId);
 
 export default router;
