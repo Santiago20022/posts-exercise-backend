@@ -13,7 +13,6 @@ import { updateComment } from './comments/updateComment';
 import { updateTodo } from './todos/updateTodo';
 import { getPostsByUserId } from './posts/getPostsByUserId';
 import { getCommentsByPostId } from './comments/getAllComments';
-
 import { getTodosByUserId } from './todos/getTodosByUserId';
 const router = express.Router();
 
