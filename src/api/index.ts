@@ -15,6 +15,7 @@ import { getPostsByUserId } from './posts/getPostsByUserId';
 import { getCommentsByPostId } from './comments/getAllComments';
 import { getTodosByUserId } from './todos/getTodosByUserId';
 import { getPostById } from './posts/getPostById'
+import { getUserById } from './users/getUserById'
 const router = express.Router();
 
 router.get('/get/users', (req, res) => getUsers(req, res));
@@ -33,5 +34,6 @@ router.get("/users/:userId/posts", getPostsByUserId);
 router.get('/posts/:postId/comments', getCommentsByPostId);
 router.get("/users/:userId/todos", getTodosByUserId);
 router.get('/posts/:id', getPostById);
+router.get('/get/user/:id', getUserById)
 
 export default router;
