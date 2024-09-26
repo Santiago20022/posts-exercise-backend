@@ -34,6 +34,6 @@ router.get("/users/:userId/posts", getPostsByUserId);
 router.get('/posts/:postId/comments', getCommentsByPostId);
 router.get("/users/:userId/todos", getTodosByUserId);
 router.get('/posts/:id', getPostById);
-router.get('/user/:id', getUserById)
+router.get('/users/:id', getUserById)
 
 export default router;
